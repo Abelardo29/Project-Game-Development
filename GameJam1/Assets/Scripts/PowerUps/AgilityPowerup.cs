@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 public class AgilityPowerup : BasicPowerup {
 
-    GameObject owner;
+    BaseCbaracter owner;
 
-    public AgilityPowerup(GameObject owner) {
+    public AgilityPowerup(BaseCbaracter owner) {
         this.owner = owner;
     }
 
