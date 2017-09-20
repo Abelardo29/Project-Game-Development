@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Movement : MonoBehaviour {
+public class Movement : BaseCbaracter {
 
     // Use this for initialization
     public Rigidbody rb;
-    public float speed = 5.0F;
-    public float rotationSpeed = 100.0F;
 
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -16,7 +12,7 @@ public class Movement : MonoBehaviour {
     
     void Update()
     {
-        float translation = Input.GetAxis("Vertical") * speed;
+        float translation = Input.GetAxis("Vertical") * movementSpeed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;

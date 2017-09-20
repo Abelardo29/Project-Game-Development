@@ -10,3 +10,4 @@ public class BaseCbaracter : MonoBehaviour {
     public BaseCbaracter() {
         rotationSpeed = movementSpeed * 20;
     }
+}
