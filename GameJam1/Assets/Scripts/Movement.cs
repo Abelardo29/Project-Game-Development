@@ -4,6 +4,7 @@ public class Movement : BaseCbaracter {
 
     // Use this for initialization
     public Rigidbody rb;
+    public float jumpPadForce = 1f;
 
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -25,6 +26,14 @@ public class Movement : BaseCbaracter {
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             }
+        }
+    }
+
+    public void OnCollision(Collision collision)
+    {
+        if (collision.gameObject.name == "JumpPad")
+        {
+            jumpPadForce = 2f;
         }
     }
 }

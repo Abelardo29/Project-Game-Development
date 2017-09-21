@@ -2,12 +2,11 @@
 
 public class BaseCbaracter : MonoBehaviour {
 
-    public float movementSpeed = 2.0f;
-    protected float rotationSpeed;
+    public float movementSpeed = 4.0f;
+    protected float rotationSpeed = 40f;
     public float jumpForce = 10f;
 
 
     public BaseCbaracter() {
-        rotationSpeed = movementSpeed * 20;
     }
 }
