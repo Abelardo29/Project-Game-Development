@@ -15,7 +15,6 @@ public class BaseWeapon : MonoBehaviour {//Gemaakt door Jan van Popta.
     void Start () {
         if (bridgeAttachment != null)
             attachments.Add(bridgeAttachment);
-
 	}
 	
 	// Update is called once per frame
