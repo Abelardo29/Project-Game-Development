@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class BridgeBuilder : BuildMechanic {
     int bridgeNumber = 1;
-	// Use this for initialization
-	void Start () {
+
+    
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,10 +19,12 @@ public class BridgeBuilder : BuildMechanic {
 	}
 
     protected override void CreateTerrain() {
-        GameObject currentCreating = new GameObject("Bridge #" + bridgeNumber++);
-        currentCreating.AddComponent<MeshFilter>();
-        currentCreating.AddComponent<MeshRenderer>();
+        GameObject CreateBridge = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        Instantiate(CreateBridge);
+        
+        CreateBridge.AddComponent<MeshFilter>();
+        CreateBridge.AddComponent<MeshRenderer>();
 
-        currentCreating.transform.position = Input.mousePosition;
+        CreateBridge.transform.position = Input.mousePosition;
     }
 }
