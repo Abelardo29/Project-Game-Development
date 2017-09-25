@@ -17,7 +17,10 @@ public class BridgeBuilder : BuildMechanic {
 	}
 
     protected override void CreateTerrain() {
-        GameObject objToSpawn = new GameObject("Bridge #" + bridgeNumber++);
+        GameObject currentCreating = new GameObject("Bridge #" + bridgeNumber++);
+        currentCreating.AddComponent<MeshFilter>();
+        currentCreating.AddComponent<MeshRenderer>();
 
+        currentCreating.transform.position = Input.mousePosition;
     }
 }
