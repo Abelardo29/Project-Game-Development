@@ -146,6 +146,31 @@ Transform:
   m_PrefabParentObject: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088,
     type: 2}
   m_PrefabInternal: {fileID: 1662069285}
+--- !u!114 &19211851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 19211843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21408fbea16d2fa46905439d15bac5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bridgeSizeModifier: 0.1
+  turnSpeed: 5
+--- !u!114 &19211852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 19211843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a3543121053724dbe71e78b0f6e474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bridgeAttachment: {fileID: 0}
 --- !u!1001 &1153934357
 Prefab:
   m_ObjectHideFlags: 0
@@ -2812,7 +2837,7 @@ Prefab:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: orthographic size
-      value: 2.2109375
+      value: 3.5078125
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}

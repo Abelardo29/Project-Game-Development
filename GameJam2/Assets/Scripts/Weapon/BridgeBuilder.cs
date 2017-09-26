@@ -7,7 +7,7 @@ public class BridgeBuilder : BuildMechanic {
     public float bridgeSizeModifier = 0.1f;
     public float turnSpeed = 5;
     GameObject CreateBridge;
-    private Vector3 initialSize = new Vector3(0, 1, 1);
+    private Vector3 initialSize = new Vector3(0, 0.1f, 1);
 
     // Use this for initialization
     void Start () {
