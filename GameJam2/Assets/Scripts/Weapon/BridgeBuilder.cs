@@ -11,6 +11,7 @@ public class BridgeBuilder : BuildMechanic {
 
     // Use this for initialization
     void Start () {
+        name = "Bridge";
         turnSpeed *= 1000;
         CreateBridge = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Destroy(CreateBridge.GetComponent<BoxCollider>());        
@@ -19,8 +20,8 @@ public class BridgeBuilder : BuildMechanic {
     }
 	
 	// Update is called once per frame
-	public override void Update () {
-        base.Update();
+	public override void UpdateAttachment () {
+        base.UpdateAttachment();
         CreateBridge.transform.position = Camera.main.ScreenToWorldPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10f));
 
         if (Input.GetMouseButtonUp(0)) {
