@@ -6,14 +6,12 @@ public class CameraScroll : MonoBehaviour {
 
     // Use this for initialization
     private Vector3 offset;
-    public Vector3 cameraDirection;
+    public Vector3 cameraDirection = Vector3.right;
     public float cameraSpeed;
     public Vector3 cameraVelocity;
 
 	void Start () {
         offset = transform.position;
-        cameraDirection = new Vector3(1, 0, 0);
-        cameraSpeed = 0.07f;
         cameraVelocity = cameraDirection * cameraSpeed;
 	}
 	
