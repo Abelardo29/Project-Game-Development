@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BridgeBuilder : BuildMechanic {
-    public float bridgeSizeModifier = 0.1f;
+    public float bridgeSizeModifier = 0.2f;
     public float turnSpeed = 5;
     GameObject CreateBridge;
     private Vector3 initialSize = new Vector3(0, 0.1f, 1);
