@@ -47,9 +47,10 @@ public class BaseWeapon : MonoBehaviour {//Gemaakt door Jan van Popta.
 	}
 
     public BuildMechanic GetMechanic(int relativePlace) {
+        BuildMechanic previousAttachment = currentAttachment;
 
         var nextIndex = attachments.IndexOf(currentAttachment) + relativePlace;
-        Debug.Log("Previous equipment: " + currentAttachment.name);
+       string previous = ("Previous equipment: " + previousAttachment.name + "\n");
         
         BuildMechanic returnObject;
 
@@ -61,8 +62,7 @@ public class BaseWeapon : MonoBehaviour {//Gemaakt door Jan van Popta.
             
         else         
             returnObject = attachments[nextIndex];
-        Debug.Log("Current equipment: " + returnObject.name);
-        userInterface.GetComponentInChildren<Text>().text = "Current equipment: " + returnObject.name;
+        userInterface.GetComponentInChildren<Text>().text = previous + "Current equipment: " + returnObject.name;
         return returnObject;
     }       
 }
