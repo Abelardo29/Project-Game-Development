@@ -21,11 +21,11 @@ public class PlayerPlatformerController : PhysicsObject
         collisions = GetComponent<CapsuleCollider2D>();
     }
 
-    /*void OnbecameInvisible() {
-        //if(transform.position.y <= Screen.height / 2 && transform.position.x <= Screen.width / 2) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //}
-    }*/
+    public override void Update() {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            LoadSceneByIndex(0);
+    }
 
     protected override void ComputeVelocity()
     {
