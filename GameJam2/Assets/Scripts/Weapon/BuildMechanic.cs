@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public  abstract class BuildMechanic : MonoBehaviour {
+    [HideInInspector()]
+    string name;    
 
-    public virtual void Update() {
+    public virtual void UpdateAttachment() {
         if (Input.GetMouseButton(0)) {
             CreateTerrain();        
         }

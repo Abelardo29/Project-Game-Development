@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPlatformerController : PhysicsObject
 {
@@ -10,12 +11,14 @@ public class PlayerPlatformerController : PhysicsObject
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private CapsuleCollider2D collisions;
 
     // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        collisions = GetComponent<CapsuleCollider2D>();
     }
 
     protected override void ComputeVelocity()
@@ -50,5 +53,14 @@ public class PlayerPlatformerController : PhysicsObject
             move.x = 0;
         }
         targetVelocity = move * maxSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "GameController")
+            LoadSceneByIndex(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadSceneByIndex(int sceneNumber) {
+        SceneManager.LoadScene(sceneNumber);
     }
 }
