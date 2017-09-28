@@ -12,11 +12,6 @@ public class CameraScroll : MonoBehaviour {
 
 	void Start () {
         offset = transform.position;
-<<<<<<< HEAD:GameJam2/Assets/CameraScroll.cs
-        cameraDirection = new Vector3(1, 0, 0);
-        cameraSpeed = 0.03f;
-=======
->>>>>>> 6ab5344c2588fc36fcf295cf97698419f182c430:GameJam2/Assets/Scripts/CameraScroll.cs
         cameraVelocity = cameraDirection * cameraSpeed;
 	}
 	
