@@ -13,7 +13,7 @@ public class CameraScroll : MonoBehaviour {
 	void Start () {
         offset = transform.position;
         cameraDirection = new Vector3(1, 0, 0);
-        cameraSpeed = 0.07f;
+        cameraSpeed = 0.03f;
         cameraVelocity = cameraDirection * cameraSpeed;
 	}
 	
