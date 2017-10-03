@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour {
+public class Iron : MonoBehaviour {
 
-    public int wood;
-    public int stone;
-    public int iron;
+    public int ironAmount;
 
 	// Use this for initialization
 	void Start () {
-		
+        ironAmount = 1500;
 	}
 	
 	// Update is called once per frame
