@@ -20,7 +20,7 @@ public class SelectWorker : MonoBehaviour {
             if (hit.collider != null && hit.collider.gameObject.tag == "Worker" && selectedWorker == null) {
                 selectedWorker = hit.collider.gameObject;
                 selectedWorker.GetComponent<Renderer>().material.color = selectedColor;
-            } else {
+			} else if (hit.collider == null) {
                 Unselect();
             }
         }

@@ -7,7 +7,8 @@ public class BaseWorker : MonoBehaviour {
     public Vector2 baseCamp;
     public string training = "none";
     public float movementSpeed;
-    public GameObject selectedBuilding;
+	public int trainingTime;
+	public GameObject player;
 
     [HideInInspector]
     public Vector3 goal;
@@ -49,9 +50,20 @@ public class BaseWorker : MonoBehaviour {
 
     private void OnCollisionEnter (Collision coll) {
         goal = transform.position;
-        GetComponent<MeshRenderer>().enabled = false;
-        Debug.Log("Yay");
+        Debug.Log("Training!");
+
+		player.GetComponent<SelectWorker> ().Unselect ();
+		StartCoroutine (Train ());
     }
 
+	IEnumerator Train () {
 
+
+		GetComponent<MeshRenderer>().enabled = false;
+		yield return new WaitForSeconds (trainingTime);
+
+		training = "Mining";
+
+		GetComponent<MeshRenderer> ().enabled = true;
+	}
 }

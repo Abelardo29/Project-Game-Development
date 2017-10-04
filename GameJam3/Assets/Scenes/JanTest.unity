@@ -305,7 +305,8 @@ MonoBehaviour:
   baseCamp: {x: 0, y: 0}
   training: blabla
   movementSpeed: 4
-  selectedBuilding: {fileID: 0}
+  trainingTime: 5
+  player: {fileID: 1726659941}
   goal: {x: 0, y: 0, z: 0}
   defaultColor: {r: 0.663938, g: 0, b: 0.809, a: 1}
 --- !u!23 &919498945
