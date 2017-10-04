@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Iron : MonoBehaviour {
 
-    public int IronAmount;
+    public int ironAmount;
 
 	// Use this for initialization
 	void Start () {
-        IronAmount = 1500;
+        ironAmount = 1500;
 	}
 	
 	// Update is called once per frame

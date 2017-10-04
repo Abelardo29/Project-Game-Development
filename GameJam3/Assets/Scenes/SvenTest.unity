@@ -298,9 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e2535b31e8c8e408e2527c88963584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 0
-  stone: 0
   iron: 0
+  stone: 0
+  wheat: 2
+  wood: 0
+  resources: 00000000000000000000000000000000
 --- !u!1 &278687235
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,9 +535,10 @@ GameObject:
   - component: {fileID: 1765787160}
   - component: {fileID: 1765787159}
   - component: {fileID: 1765787158}
+  - component: {fileID: 1765787164}
   m_Layer: 0
   m_Name: Iron
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30420fbbf9bc7bf4abd947d450be6eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IronAmount: 0
+  ironAmount: 0
 --- !u!54 &1765787159
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -631,6 +634,18 @@ Transform:
   m_Father: {fileID: 1278050814}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1765787164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1765787157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016187cc079a4ed4584b088d272973ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: Iron
 --- !u!1 &1788681240
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,9 +658,10 @@ GameObject:
   - component: {fileID: 1788681244}
   - component: {fileID: 1788681243}
   - component: {fileID: 1788681242}
+  - component: {fileID: 1788681246}
   m_Layer: 0
   m_Name: Forest
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -728,6 +744,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788681240}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1788681246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788681240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016187cc079a4ed4584b088d272973ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: Wood
 --- !u!1 &1797501044
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,9 +853,10 @@ GameObject:
   - component: {fileID: 1825981670}
   - component: {fileID: 1825981669}
   - component: {fileID: 1825981668}
+  - component: {fileID: 1825981674}
   m_Layer: 0
   m_Name: Farm Land
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,6 +954,18 @@ Transform:
   m_Father: {fileID: 1278050814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825981674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825981667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016187cc079a4ed4584b088d272973ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: Wheat
 --- !u!1 &2102180263
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,9 +979,10 @@ GameObject:
   - component: {fileID: 2102180267}
   - component: {fileID: 2102180266}
   - component: {fileID: 2102180265}
+  - component: {fileID: 2102180270}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1036,3 +1078,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102180263}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2102180270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102180263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016187cc079a4ed4584b088d272973ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: Stone
