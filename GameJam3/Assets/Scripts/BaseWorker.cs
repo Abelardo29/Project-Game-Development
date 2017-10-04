@@ -7,36 +7,51 @@ public class BaseWorker : MonoBehaviour {
     public Vector2 baseCamp;
     public string training = "none";
     public float movementSpeed;
+    public GameObject selectedBuilding;
 
-    [HideInInspector()]
-    public Vector2 playerOrders; //a position to be set by the mouse.
+    [HideInInspector]
     public Vector3 goal;
 
-    public BaseWorker (string trainingParam) {
+    public Color defaultColor = Color.magenta;
+
+    BaseWorker (string trainingParam) {
         training = trainingParam;
     }
-	// Use this for initialization
+
 	void Start () {
         transform.position = new Vector3(baseCamp.x, baseCamp.y, 0);
-	}
+        GetComponent<Renderer>().material.color = defaultColor;
+    }
 	
-	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
-            goal = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	}
 
     private void LateUpdate() {
             MoveToLocation(goal);
+
+        //if (selectedBuilding != null) {
+
+        //}
     }
 
     void MoveToLocation(Vector3 goal) {
         transform.position = Vector3.MoveTowards(transform.position, goal, movementSpeed * Time.deltaTime);
-        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-        
+        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);        
     }
 
-    void MoveToBuilding() {
-
+    public void MoveToBuilding(GameObject building) {
+        goal = building.transform.position;
+        //while (Vector3.Distance(transform.position, building.transform.position) > 5) {
+            MoveToLocation(building.transform.position);
+            //if () ;
+        //}
     }
+
+    private void OnCollisionEnter (Collision coll) {
+        goal = transform.position;
+        GetComponent<MeshRenderer>().enabled = false;
+        Debug.Log("Yay");
+    }
+
+
 }
