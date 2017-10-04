@@ -17,6 +17,6 @@ public class GetResourceUI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        resourceText.text = "HP: " + resources.hp + "                 Food: " + resources.food + "                 Wood: " + resources.wood + "                 Stone: " + resources.stone;
+        resourceText.text = "HP: " + 0 + "                 Food: " + resources.resources[resources.wheat] + "                 Wood: " + resources.resources[resources.wood] + "                 Stone: " + resources.resources[resources.stone];
     }
 }

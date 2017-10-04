@@ -187,6 +187,9 @@ GameObject:
   - component: {fileID: 120902231}
   - component: {fileID: 120902233}
   - component: {fileID: 120902232}
+  - component: {fileID: 120902234}
+  - component: {fileID: 120902236}
+  - component: {fileID: 120902235}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -299,10 +302,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iron: 0
-  stone: 0
+  stone: 1
   wheat: 2
-  wood: 0
+  wood: 3
   resources: 00000000000000000000000000000000
+--- !u!114 &120902234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120902226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b96efd25d832b94a816ba9a6f77c1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intervalHarvest: 1
+  totalHarvests: 10
+--- !u!114 &120902235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120902226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e2535b31e8c8e408e2527c88963584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iron: 0
+  stone: 1
+  wheat: 2
+  wood: 3
+  resources: 00000000000000000000000000000000
+--- !u!114 &120902236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120902226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0821cd1f661b24f946d381af869178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2102180263}
+  home: {fileID: 278687235}
+  state: 
 --- !u!1 &278687235
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,9 +361,10 @@ GameObject:
   - component: {fileID: 278687237}
   - component: {fileID: 278687236}
   - component: {fileID: 278687240}
+  - component: {fileID: 278687241}
   m_Layer: 0
   m_Name: Building
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,6 +448,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &278687241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278687235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e2535b31e8c8e408e2527c88963584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iron: 0
+  stone: 1
+  wheat: 2
+  wood: 3
+  resources: 00000000000000000000000000000000
 --- !u!1 &1278050813
 GameObject:
   m_ObjectHideFlags: 0

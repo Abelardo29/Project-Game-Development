@@ -5,6 +5,7 @@ using UnityEngine;
 public class Harvest : MonoBehaviour {
 
     private GameObject harvestTarget;
+    private ResourceManager rsm;
 
     public float intervalHarvest = 1;
     public float totalHarvests = 10;
@@ -12,7 +13,12 @@ public class Harvest : MonoBehaviour {
     private float startTime;
 
     private string resourceTypeCol;
-	
+
+    private void Start()
+    {
+        rsm = GetComponent<ResourceManager>();
+    }
+
     public void HarvestResource(string resource, string state)
     {
         if (state == "Harvesting")
@@ -27,16 +33,17 @@ public class Harvest : MonoBehaviour {
                         TravelHome();
                         break;
                     }
-                    GetComponent<ResourceManager>().iron++;
+                    rsm.resources[rsm.iron]++;
+                    harvestTarget.GetComponent<Iron>().ironAmount--;
                     break;
                 case "Stone":
-                    GetComponent<ResourceManager>().stone++;
+                    rsm.resources[rsm.stone]++;
                     break;
                 case "Wheat":
-                    GetComponent<ResourceManager>().wheat++;
+                    rsm.resources[rsm.wheat]++;
                     break;
                 case "Wood":
-                    GetComponent<ResourceManager>().wood++;
+                    rsm.resources[rsm.wood]++;
                     break;
             }
         }
@@ -50,16 +57,20 @@ public class Harvest : MonoBehaviour {
 
     private void Update()
     {
-        // na elk interval harvest de villager 1 resource van het type.
-        if (Time.time >= (startTime + intervalHarvest))
+        if (GetComponent<VillagerStateManager>().state == "Harvesting")
         {
-            harvests++;
-            startTime += intervalHarvest;
-            HarvestResource(harvestTarget.GetComponent<ResourceType>().resourceType, GetComponent<VillagerStateManager>().state);
-        }
-        if (harvests >= totalHarvests)
-        {
-            TravelHome();
+            // na elk interval harvest de villager 1 resource van het type.
+            if (Time.time >= (startTime + intervalHarvest))
+            {
+                harvests++;
+                startTime += intervalHarvest;
+                HarvestResource(harvestTarget.GetComponent<ResourceType>().resourceType, GetComponent<VillagerStateManager>().state);
+            }
+            if (harvests >= totalHarvests)
+            {
+                TravelHome();
+                harvests = 0;
+            }
         }
     }
 
