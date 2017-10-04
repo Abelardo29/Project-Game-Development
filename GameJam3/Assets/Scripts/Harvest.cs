@@ -13,6 +13,7 @@ public class Harvest : MonoBehaviour {
 	
     public void HarvestResource(string resource)
     {
+        // Code die de bepaalde resource toevoegd
         switch (resource)
         {
             case "Stone":
@@ -25,6 +26,7 @@ public class Harvest : MonoBehaviour {
     }
     private void Update()
     {
+        // na elk interval harvest de villager 1 resource van het type.
         if (Time.time >= (startTime + intervalHarvest))
         {
             harvests++;
@@ -33,13 +35,14 @@ public class Harvest : MonoBehaviour {
         }
         if (harvests >= totalHarvests)
         {
-            // switch state to travelHome;
-
+            // switch state to TravelHome na het maximum aantal harvests.
+            GetComponent<VillagerStateManager>().state = "TravelHome";
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Geeft de begintijd en type rescource door aan de update.
         if (collision.gameObject.tag == "Resource")
         {
             startTime = Time.time;
