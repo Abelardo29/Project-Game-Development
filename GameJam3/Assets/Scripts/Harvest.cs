@@ -4,43 +4,45 @@ using UnityEngine;
 
 public class Harvest : MonoBehaviour {
 
-    private float nIntervalHarvest;
-    private float intervalHarvest = 1;
-    private float totalHarvests = 10;
+    public float intervalHarvest = 1;
+    public float totalHarvests = 10;
+    private float harvests;
+    private float startTime;
 
     private string resourceTypeCol;
 	
-    public void HarvestResource(float startTime)
+    public void HarvestResource(string resource)
     {
-        intervalHarvest = startTime;
-        if (nIntervalHarvest + intervalHarvest <= Time.time)
+        switch (resource)
         {
-            nIntervalHarvest += intervalHarvest;
-            switch (resourceTypeCol)
-            {
-                case "Stone":
-                    resourceTypeCol = "Stone";
-                    //Add harvest code;
-                    break;
-
-                case "Wood":
-                    resourceTypeCol = "Wood";
-                    //Add harvest code;
-                    break;
-            }
+            case "Stone":
+                // stone++
+                break;
+            case "Wood":
+                // wood++
+                break;
         }
-        if (nIntervalHarvest > startTime + (totalHarvests * intervalHarvest))
+    }
+    private void Update()
+    {
+        if (Time.time >= (startTime + intervalHarvest))
+        {
+            harvests++;
+            startTime += intervalHarvest;
+            HarvestResource(resourceTypeCol);
+        }
+        if (harvests >= totalHarvests)
         {
             // switch state to travelHome;
-            
+
         }
     }
 
-    private void OnCollision(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Resource")
         {
-            HarvestResource(Time.time);
+            startTime = Time.time;
         }
         switch (collision.gameObject.GetComponent<ResourceType>().resourceType)
         {
