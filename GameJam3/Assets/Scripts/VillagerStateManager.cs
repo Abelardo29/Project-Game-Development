@@ -27,17 +27,12 @@ public class VillagerStateManager : MonoBehaviour {
             case "Harvesting":
 
                 break;
-            case "Storing":
-
-                break;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Resource")
             state = "Harvesting";
-        if (collision.gameObject.tag == "Building")
-            state = "Storing";
     }
 
 }

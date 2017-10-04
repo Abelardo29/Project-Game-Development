@@ -4,39 +4,73 @@ using UnityEngine;
 
 public class Harvest : MonoBehaviour {
 
+    private GameObject harvestTarget;
+    private ResourceManager rsm;
+
     public float intervalHarvest = 1;
     public float totalHarvests = 10;
     private float harvests;
     private float startTime;
 
     private string resourceTypeCol;
-	
-    public void HarvestResource(string resource)
+
+    private void Start()
     {
-        // Code die de bepaalde resource toevoegd
-        switch (resource)
+        rsm = GetComponent<ResourceManager>();
+    }
+
+    public void HarvestResource(string resource, string state)
+    {
+        if (state == "Harvesting")
         {
-            case "Stone":
-                // stone++
-                break;
-            case "Wood":
-                // wood++
-                break;
+            // Code die de bepaalde resource toevoegd
+            switch (resource)
+            {
+                case "Iron":
+                    if (harvestTarget.GetComponent<Iron>().ironAmount <= 0)
+                    {
+                        // switch state to TravelHome na het maximum aantal harvests.
+                        TravelHome();
+                        break;
+                    }
+                    rsm.resources[rsm.iron]++;
+                    harvestTarget.GetComponent<Iron>().ironAmount--;
+                    break;
+                case "Stone":
+                    rsm.resources[rsm.stone]++;
+                    break;
+                case "Wheat":
+                    rsm.resources[rsm.wheat]++;
+                    break;
+                case "Wood":
+                    rsm.resources[rsm.wood]++;
+                    break;
+            }
         }
     }
+
+    private void TravelHome()
+    {
+        // switch state to TravelHome na het maximum aantal harvests.
+        GetComponent<VillagerStateManager>().state = "TravelHome";
+    }
+
     private void Update()
     {
-        // na elk interval harvest de villager 1 resource van het type.
-        if (Time.time >= (startTime + intervalHarvest))
+        if (GetComponent<VillagerStateManager>().state == "Harvesting")
         {
-            harvests++;
-            startTime += intervalHarvest;
-            HarvestResource(resourceTypeCol);
-        }
-        if (harvests >= totalHarvests)
-        {
-            // switch state to TravelHome na het maximum aantal harvests.
-            GetComponent<VillagerStateManager>().state = "TravelHome";
+            // na elk interval harvest de villager 1 resource van het type.
+            if (Time.time >= (startTime + intervalHarvest))
+            {
+                harvests++;
+                startTime += intervalHarvest;
+                HarvestResource(harvestTarget.GetComponent<ResourceType>().resourceType, GetComponent<VillagerStateManager>().state);
+            }
+            if (harvests >= totalHarvests)
+            {
+                TravelHome();
+                harvests = 0;
+            }
         }
     }
 
@@ -47,15 +81,6 @@ public class Harvest : MonoBehaviour {
         {
             startTime = Time.time;
         }
-        switch (collision.gameObject.GetComponent<ResourceType>().resourceType)
-        {
-            case "Stone":
-                resourceTypeCol = "Stone";
-                break;
-
-            case "Wood":
-                resourceTypeCol = "Wood";
-                break;
-        }
+        harvestTarget = collision.gameObject;        
     }
 }
