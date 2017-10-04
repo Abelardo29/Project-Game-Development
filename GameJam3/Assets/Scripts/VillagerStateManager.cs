@@ -9,6 +9,10 @@ public class VillagerStateManager : MonoBehaviour {
     public string state;
 
     private Rigidbody rb;
+    public int iron;
+    public int stone;
+    public int wheat;
+    public int wood;
 
     private void Start()
     {

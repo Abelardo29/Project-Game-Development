@@ -16,11 +16,17 @@ public class Harvest : MonoBehaviour {
         // Code die de bepaalde resource toevoegd
         switch (resource)
         {
+            case "Iron":
+                GetComponent<VillagerStateManager>().iron++;
+                break;
             case "Stone":
-                // stone++
+                GetComponent<VillagerStateManager>().stone++;
+                break;
+            case "Wheat":
+                GetComponent<VillagerStateManager>().wheat++;
                 break;
             case "Wood":
-                // wood++
+                GetComponent<VillagerStateManager>().wood++;
                 break;
         }
     }
@@ -49,13 +55,20 @@ public class Harvest : MonoBehaviour {
         }
         switch (collision.gameObject.GetComponent<ResourceType>().resourceType)
         {
-            case "Stone":
-                resourceTypeCol = "Stone";
-                break;
+            case "Iron":
+                resourceTypeCol = "Iron";
+                if (collision.gameObject.GetComponent<Iron>().IronAmount <= 0)
+                {
+                    // add "this is depleted"
 
-            case "Wood":
-                resourceTypeCol = "Wood";
+                }
                 break;
+            case "Stone":
+                resourceTypeCol = "Stone"; break;
+            case "Wheat":
+                resourceTypeCol = "Wheat";  break;
+            case "Wood":
+                resourceTypeCol = "Wood"; break;
         }
     }
 }
