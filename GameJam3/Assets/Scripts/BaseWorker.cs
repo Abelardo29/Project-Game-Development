@@ -8,7 +8,9 @@ public class BaseWorker : MonoBehaviour {
     public string training = "none";
     public float movementSpeed;
 	public int trainingTime;
-	public GameObject player;
+	public int miningTime;
+	public GameObject player, headquarters, resource;
+	public int iron = 0;
 
     [HideInInspector]
     public Vector3 goal;
@@ -20,7 +22,7 @@ public class BaseWorker : MonoBehaviour {
     }
 
 	void Start () {
-        transform.position = new Vector3(baseCamp.x, baseCamp.y, 0);
+		transform.position = new Vector3(baseCamp.x, 0, baseCamp.y);
         GetComponent<Renderer>().material.color = defaultColor;
     }
 	
@@ -30,9 +32,6 @@ public class BaseWorker : MonoBehaviour {
     private void LateUpdate() {
             MoveToLocation(goal);
 
-        //if (selectedBuilding != null) {
-
-        //}
     }
 
     void MoveToLocation(Vector3 goal) {
@@ -42,28 +41,67 @@ public class BaseWorker : MonoBehaviour {
 
     public void MoveToBuilding(GameObject building) {
         goal = building.transform.position;
-        //while (Vector3.Distance(transform.position, building.transform.position) > 5) {
             MoveToLocation(building.transform.position);
-            //if () ;
-        //}
     }
 
     private void OnCollisionEnter (Collision coll) {
-        goal = transform.position;
-        Debug.Log("Training!");
+		goal = transform.position;
+		switch (coll.gameObject.tag) {
+		case "BuildingTraining":
+			
+			Debug.Log("Training!");
 
-		player.GetComponent<SelectWorker> ().Unselect ();
-		StartCoroutine (Train ());
+			player.GetComponent<SelectWorker> ().Unselect ();
+			StartCoroutine (Train ());
+			break;
+
+		case "Iron":
+			if (training.Equals("Mining") ){
+				Debug.Log ("Starting to mine!");
+				resource = coll.gameObject;
+				StartCoroutine (MineIron ());
+			}
+				break;
+
+		case "BaseCamp": 
+			Debug.Log ("Arrived at BaseCamp!");
+			player.GetComponent<ResourceManager> ().stone += iron;
+			iron = 0;
+			goal = resource.transform.position;
+			break;
+
+				default:
+				Debug.Log("Something went seriously wrong");
+				break;
+		}
+
+
+        
     }
 
 	IEnumerator Train () {
-
 
 		GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds (trainingTime);
 
 		training = "Mining";
+		Debug.Log ("Training done!"); 
 
 		GetComponent<MeshRenderer> ().enabled = true;
+	}
+
+		IEnumerator MineIron (){
+				
+		yield return new WaitForSeconds (miningTime);
+
+		for (int i = 0; i < 20; i++) {
+			yield return new WaitForSeconds (0.1f);
+				iron++;
+		}
+			yield return new WaitForSeconds (miningTime);
+
+			Debug.Log ("Mining done!");
+			iron += 10;
+		MoveToBuilding (headquarters);
 	}
 }

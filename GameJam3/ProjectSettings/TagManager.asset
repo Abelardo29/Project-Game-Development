@@ -8,6 +8,8 @@ TagManager:
   - Resource
   - BuildingTraining
   - Building
+  - Iron
+  - BaseCamp
   layers:
   - Default
   - TransparentFX
